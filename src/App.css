@@ -1,6 +1,9 @@
 body {
   background: rgb(52, 44, 196);
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .todo-list {
@@ -16,9 +19,21 @@ body {
   border: none;
   border-radius: 10px;
   background-color: white;
+  font-size: 18px;
 }
 
-.add-btn {
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px;
+  border: solid 1px;
+  border-radius: 10px;
+  font-size: 18px;
+  background: none;
+  margin: 10px;
+}
+
+.std-btn {
   width: 50px;
   height: 50px;
   margin: 5px;
@@ -29,4 +44,8 @@ body {
 
 button:hover {
   opacity: .9;
+}
+
+.completed {
+  text-decoration: line-through;
 }

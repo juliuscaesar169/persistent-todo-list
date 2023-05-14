@@ -51,9 +51,20 @@ const TodoList = () => {
     }
   };
 
-  const handleDeleteTodo = (id: number) => {
+  const handleDelete = (id: number) => {
     try {
       const updatedTodos = todos.filter((todo: ITodoItem) => todo.id !== id);
+      setTodos(updatedTodos);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleComplete = (id: number) => {
+    try {
+      const updatedTodos = todos.map((todo: ITodoItem) => {
+        return todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
+      });
       setTodos(updatedTodos);
     } catch (error) {
       console.log(error);
@@ -73,8 +84,9 @@ const TodoList = () => {
           className="todo-input"
           placeholder="Add new task"
         />
-        <button type="submit" className='add-btn'>Add</button>
+        <button type="submit" className='std-btn'>Add</button>
       </form>
+
 
       {/* Todo Items */}
       {todos && todos.length > 0 ? (
@@ -82,11 +94,12 @@ const TodoList = () => {
           <TodoItem
             key={todo.id}
             todo={todo}
-            onDelete={() => handleDeleteTodo(todo.id)}
+            toggleComplete={handleComplete}
+            onDelete={handleDelete}
           />
         ))
       ) : (
-        <li>The todo list is empty</li>
+        <p>The todo list is empty</p>
       )}
     </div>
   );

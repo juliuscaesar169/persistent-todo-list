@@ -5,6 +5,7 @@ import TodoItem from './TodoItem';
 const TodoList = () => {
   const [todos, setTodos] = useState<any>();
   const [inputValue, setInputValue] = useState<string>('');
+  const [error, setError] = useState<string>('')
 
  /** get todos from local storage */
   useEffect(() => {
@@ -12,7 +13,7 @@ const TodoList = () => {
         const storedTodos = localStorage.getItem('todos')
         if (storedTodos) setTodos(JSON.parse(storedTodos))
     } catch (error) {
-        console.log(error);
+        setError('Failed to fetch todos');
     }
   },[])
 
@@ -22,7 +23,7 @@ const TodoList = () => {
         const newTodos = JSON.stringify(todos)
         if (newTodos) localStorage.setItem('todos', newTodos)
     } catch (error) {
-        console.log(error);
+        setError('Failed setting todos');
     }
   },[todos])
 
@@ -39,7 +40,7 @@ const TodoList = () => {
         setInputValue('');
       }
     } catch (error) {
-      console.log(error);
+        setError('Failed adding todo');
     }
   };
 
@@ -47,7 +48,7 @@ const TodoList = () => {
     try {
       setInputValue(e.target.value);
     } catch (error) {
-      console.log(error);
+        setError('Failed setting input');
     }
   };
 
@@ -56,7 +57,7 @@ const TodoList = () => {
       const updatedTodos = todos.filter((todo: ITodoItem) => todo.id !== id);
       setTodos(updatedTodos);
     } catch (error) {
-      console.log(error);
+      setError('Failed deleting todo');
     }
   };
 
@@ -67,7 +68,7 @@ const TodoList = () => {
       });
       setTodos(updatedTodos);
     } catch (error) {
-      console.log(error);
+        setError('Failed changing todo status');
     }
   };
 
@@ -87,6 +88,8 @@ const TodoList = () => {
         <button type="submit" className='std-btn'>Add</button>
       </form>
 
+      {/* Error message */}
+      {error && <p onClick={() => setError('')}>Error: {error}</p>}
 
       {/* Todo Items */}
       {todos && todos.length > 0 ? (

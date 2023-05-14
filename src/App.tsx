@@ -3,9 +3,7 @@ import './App.css';
 import TodoList from './components/TodoList';
 
 function App() {
-  return (
-    <TodoList />
-  );
+  return <TodoList />;
 }
 
 export default App;

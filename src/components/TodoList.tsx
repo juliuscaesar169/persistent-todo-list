@@ -3,29 +3,30 @@ import ITodoItem from '../types/todoItem';
 import TodoItem from './TodoItem';
 
 const TodoList = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [todos, setTodos] = useState<any>();
   const [inputValue, setInputValue] = useState<string>('');
   const [error, setError] = useState<string>('');
 
- /** get todos from local storage */
+  /** get todos from local storage */
   useEffect(() => {
     try {
-        const storedTodos = localStorage.getItem('todos')
-        if (storedTodos) setTodos(JSON.parse(storedTodos))
+      const storedTodos = localStorage.getItem('todos');
+      if (storedTodos) setTodos(JSON.parse(storedTodos));
     } catch (error) {
-        setError('Failed to fetch todos');
+      setError('Failed to fetch todos');
     }
-  },[])
+  }, []);
 
   /** set todos to local storage */
   useEffect(() => {
     try {
-        const newTodos = JSON.stringify(todos)
-        if (newTodos) localStorage.setItem('todos', newTodos)
+      const newTodos = JSON.stringify(todos);
+      if (newTodos) localStorage.setItem('todos', newTodos);
     } catch (error) {
-        setError('Failed setting todos');
+      setError('Failed setting todos');
     }
-  },[todos])
+  }, [todos]);
 
   const handleAddTodo = (e: React.FormEvent<HTMLFormElement>) => {
     try {
@@ -40,7 +41,7 @@ const TodoList = () => {
         setInputValue('');
       }
     } catch (error) {
-        setError('Failed adding todo');
+      setError('Failed adding todo');
     }
   };
 
@@ -48,7 +49,7 @@ const TodoList = () => {
     try {
       setInputValue(e.target.value);
     } catch (error) {
-        setError('Failed setting input');
+      setError('Failed setting input');
     }
   };
 
@@ -64,27 +65,29 @@ const TodoList = () => {
   const handleComplete = (id: number) => {
     try {
       const updatedTodos = todos.map((todo: ITodoItem) => {
-        return todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
+        return todo.id === id
+          ? { ...todo, isCompleted: !todo.isCompleted }
+          : todo;
       });
       setTodos(updatedTodos);
     } catch (error) {
-        setError('Failed changing todo status');
+      setError('Failed changing todo status');
     }
   };
 
-  const handleUpdate = ({id, title}:ITodoItem) => {
+  const handleUpdate = ({ id, title }: ITodoItem) => {
     try {
-        const updatedTodos = todos.map((todo: ITodoItem) => {
-          return todo.id === id ? { ...todo, title } : todo
-        });
-        setTodos(updatedTodos);
+      const updatedTodos = todos.map((todo: ITodoItem) => {
+        return todo.id === id ? { ...todo, title } : todo;
+      });
+      setTodos(updatedTodos);
     } catch (error) {
-        setError('Failed updating todo')
+      setError('Failed updating todo');
     }
-  }
+  };
 
   return (
-    <div className='todo-list'>
+    <div className="todo-list">
       <h1>TODO LIST</h1>
 
       {/* Todo Input Form */}
@@ -96,7 +99,9 @@ const TodoList = () => {
           className="todo-input"
           placeholder="Add new task"
         />
-        <button type="submit" className='std-btn'>Add</button>
+        <button type="submit" className="std-btn">
+          Add
+        </button>
       </form>
 
       {/* Error message */}

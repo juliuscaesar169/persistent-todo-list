@@ -5,7 +5,7 @@ import TodoItem from './TodoItem';
 const TodoList = () => {
   const [todos, setTodos] = useState<any>();
   const [inputValue, setInputValue] = useState<string>('');
-  const [error, setError] = useState<string>('')
+  const [error, setError] = useState<string>('');
 
  /** get todos from local storage */
   useEffect(() => {
@@ -72,6 +72,17 @@ const TodoList = () => {
     }
   };
 
+  const handleUpdate = ({id, title}:ITodoItem) => {
+    try {
+        const updatedTodos = todos.map((todo: ITodoItem) => {
+          return todo.id === id ? { ...todo, title } : todo
+        });
+        setTodos(updatedTodos);
+    } catch (error) {
+        setError('Failed updating todo')
+    }
+  }
+
   return (
     <div className='todo-list'>
       <h1>TODO LIST</h1>
@@ -98,6 +109,7 @@ const TodoList = () => {
             key={todo.id}
             todo={todo}
             toggleComplete={handleComplete}
+            onUpdate={handleUpdate}
             onDelete={handleDelete}
           />
         ))

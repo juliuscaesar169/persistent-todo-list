@@ -99,7 +99,11 @@ const TodoList = () => {
           className="todo-input"
           placeholder="Add new task"
         />
-        <button type="submit" className="std-btn">
+        <button
+          type="submit"
+          className="std-btn"
+          data-testid="add-new-task-btn"
+        >
           Add
         </button>
       </form>

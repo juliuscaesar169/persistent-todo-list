@@ -1,46 +1,47 @@
-# Getting Started with Create React App
+# Persistent To-do List
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+SPA that displays a list of tasks to complete.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Add, edit and delete a to-do (task)
+- Persistence
 
-### `npm start`
+## Requirements
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Node.js
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Installation
 
-### `npm test`
+1. Clone repository
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+    git clone https://github.com/juliuscaesar169/persistent-todo-list.git
+```
 
-### `npm run build`
+2. Go to the project
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+    cd persistent-todo-list
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Install dependencies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+    npm install
+```
 
-### `npm run eject`
+4. Run project
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+    npm start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Usage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To add a new to-do (task) just write in the main input and click on the `add` button or simply press `enter`. Then you will see the task with the options to `edit` or even `delete` it. If you want to mark it as `completed`, click on the to-do text.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Roadmap
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Unit Tests
+- Full Responsive

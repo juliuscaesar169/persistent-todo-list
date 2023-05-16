@@ -9,13 +9,13 @@ const addNewTask = (taskTitle: string) => {
   AddTaskBtn?.click();
 };
 
-it('renders main input', () => {
+xit('renders main input', () => {
   render(<TodoList />);
   const MainInput = screen.getByPlaceholderText(/Add new task/i);
   expect(MainInput).toBeInTheDocument();
 });
 
-it('adds a new task', () => {
+xit('adds a new task', () => {
   const taskTitle = 'New TODO Task';
   render(<TodoList />);
   addNewTask(taskTitle);

@@ -45,13 +45,9 @@ const TodoItem = ({ todo, toggleComplete, onUpdate, onDelete }: Props) => {
           </div>
           <div>
             {/* Cancel btn */}
-            <Button onClick={() => handleCancel()}>
-              Cancel
-            </Button>
+            <Button onClick={() => handleCancel()}>Cancel</Button>
             {/* Save btn */}
-            <Button onClick={() => handleSave()}>
-              Save
-            </Button>
+            <Button onClick={() => handleSave()}>Save</Button>
           </div>
         </>
       ) : (
@@ -61,9 +57,7 @@ const TodoItem = ({ todo, toggleComplete, onUpdate, onDelete }: Props) => {
           </div>
           <div>
             {/* Edit btn */}
-            <Button onClick={() => setEditing(true)}>
-              Edit
-            </Button>
+            <Button onClick={() => setEditing(true)}>Edit</Button>
 
             {/* Delete btn */}
             <Button className="std-btn" onClick={() => onDelete(todo.id)}>

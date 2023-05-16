@@ -93,7 +93,7 @@ const TodoList = () => {
       <h1>TODO LIST</h1>
 
       {/* Todo Input Form */}
-      <TodoMainInputForm 
+      <TodoMainInputForm
         value={inputValue}
         addTodo={handleAddTodo}
         inputOnChange={handleInputOnChange}

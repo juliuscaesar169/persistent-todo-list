@@ -3,11 +3,11 @@ import Button from '../commons/Button';
 
 type Props = {
   value: string;
-  addTodo: (e:React.FormEvent<HTMLFormElement>) => void;
-  inputOnChange: (e:ChangeEvent<HTMLInputElement>) => void;
+  addTodo: (e: React.FormEvent<HTMLFormElement>) => void;
+  inputOnChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
-const TodoMainInputForm = ({value, addTodo, inputOnChange, }:Props) => {
+const TodoMainInputForm = ({ value, addTodo, inputOnChange }: Props) => {
   return (
     <form onSubmit={addTodo}>
       <input
@@ -18,9 +18,7 @@ const TodoMainInputForm = ({value, addTodo, inputOnChange, }:Props) => {
         placeholder="Add new task"
       />
 
-      <Button onClick={() => addTodo}>
-        Add
-      </Button>
+      <Button onClick={() => addTodo}>Add</Button>
     </form>
   );
 };

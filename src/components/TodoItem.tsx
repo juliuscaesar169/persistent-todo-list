@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ITodoItem from '../types/todoItem';
+import Button from '../commons/Button';
 
 type Props = {
   todo: ITodoItem;
@@ -44,17 +45,9 @@ const TodoItem = ({ todo, toggleComplete, onUpdate, onDelete }: Props) => {
           </div>
           <div>
             {/* Cancel btn */}
-            <button className="std-btn" onClick={() => handleCancel()}>
-              Cancel
-            </button>
+            <Button onClick={() => handleCancel()}>Cancel</Button>
             {/* Save btn */}
-            <button
-              className="std-btn"
-              type="submit"
-              onClick={() => handleSave()}
-            >
-              Save
-            </button>
+            <Button onClick={() => handleSave()}>Save</Button>
           </div>
         </>
       ) : (
@@ -64,14 +57,12 @@ const TodoItem = ({ todo, toggleComplete, onUpdate, onDelete }: Props) => {
           </div>
           <div>
             {/* Edit btn */}
-            <button className="std-btn" onClick={() => setEditing(true)}>
-              Edit
-            </button>
+            <Button onClick={() => setEditing(true)}>Edit</Button>
 
             {/* Delete btn */}
-            <button className="std-btn" onClick={() => onDelete(todo.id)}>
+            <Button className="std-btn" onClick={() => onDelete(todo.id)}>
               Delete
-            </button>
+            </Button>
           </div>
         </>
       )}

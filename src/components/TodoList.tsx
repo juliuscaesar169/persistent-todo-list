@@ -1,6 +1,8 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import ITodoItem from '../types/todoItem';
 import TodoItem from './TodoItem';
+import TodoMainInputForm from './TodoMainInputForm';
+import ErrorMessage from '../commons/ErrorMessage';
 
 const TodoList = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -91,21 +93,14 @@ const TodoList = () => {
       <h1>TODO LIST</h1>
 
       {/* Todo Input Form */}
-      <form onSubmit={handleAddTodo}>
-        <input
-          type="text"
-          value={inputValue}
-          onChange={handleInputOnChange}
-          className="todo-input"
-          placeholder="Add new task"
-        />
-        <button type="submit" className="std-btn">
-          Add
-        </button>
-      </form>
+      <TodoMainInputForm
+        value={inputValue}
+        addTodo={handleAddTodo}
+        inputOnChange={handleInputOnChange}
+      />
 
       {/* Error message */}
-      {error && <p onClick={() => setError('')}>Error: {error}</p>}
+      {error && error.length > 0 && <ErrorMessage message={error} />}
 
       {/* Todo Items */}
       {todos && todos.length > 0 ? (
